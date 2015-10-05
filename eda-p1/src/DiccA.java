@@ -40,6 +40,7 @@ public class DiccA {
 				lenguas[i] = partes[i].charAt(0);
 			
 			Palabra nueva = null;
+			String[] aux = null;
 
 			// recorro las lineas, creando las palabras, agregando acepciones e insertando
 			// en diccionario
@@ -47,11 +48,13 @@ public class DiccA {
 				partes = linea.split("[ ]*\\*[ ]*");
 				if (partes[0]!="") {
 					nueva = new Palabra(partes[0],nlenguas);
-					for (i = 1; i < nlenguas; i++) { // cambiar a cantidad de lenguas?
-						if (partes[i]!="")
-							nueva.agregaAcepcion(partes[i], lenguas[i]);
+					for (i = 1; i < partes.length; i++) {
+						aux = partes[i].split("/");
+						for (int j = 0; j < aux.length; j++)
+							if (aux[j]!="")
+								nueva.agregaAcepcion(aux[j], lenguas[i]);
 					}
-					insertaPalabra(new Palabra(partes[0],partes.length-1));
+					insertaPalabra(nueva);
 				}
 				linea = lectura.readLine();
 			}
@@ -208,23 +211,92 @@ public class DiccA {
 	   return -1;
 	}
 
+	// devuelve la primera traduccion de s a la lengua l
 	public String traduce1(String s, char l) {
+		if (s!=null) {
+			 for (Palabra p : dicc) {
+				 if (p!=null && p.getOrigen().equalsIgnoreCase(s)) {
+					 		p.getTraduccion(l);
+				 }
+			 }
+		 }
 		return null;
 	}
-
+	
+	// devuelve todas las traducciones a l de s
 	public String traduce2(String s, char l) {
+		if (s!=null) {
+			 for (Palabra p : dicc) {
+				 if (p!=null && p.getOrigen().equalsIgnoreCase(s)) {
+					 		p.getTraducciones(l);
+				 }
+			 }
+		}
 		return null;
 	}
 
+	// muestra escribeInfo para 0: dicc o 1: diccord
 	public void muestraDiccA(int i) {
-
+		if (i==0) {
+			for (Palabra p : dicc) {
+				if (p!=null)
+					p.escribeInfo();
+			}
+		}
+		
+		if (i==1) {
+			for (Palabra p : diccord) {
+				if (p!=null)
+					p.escribeInfo();
+			}
+		}
 	}
 
+	// como el anterior pero solo para las j primeras palabras
 	public void muestraDiccA(int i, int j) {
-
+		if (j>0) {
+			if (i==0) {
+				for (int n = 0; n < j; n++) {
+					if (dicc[n]!=null)
+						dicc[n].escribeInfo();
+				}
+			}
+			
+			if (i==1) {
+				for (int n = 0; n < j; n++) {
+					if (diccord[n]!=null)
+						diccord[n].escribeInfo();
+				}
+			}
+		}
 	}
 
+	// muestra las j primeras lineas en formato origen:traduccionLengua l
 	public void muestraDiccA(int i, int j, char l) {
-
+		if (j > 0) {
+			if (i == 0) {
+				for (int n = 0; n < j; n++) {
+					if (dicc[n]!=null) {
+						System.out.print(dicc[n].getOrigen());
+						System.out.print(":");
+						System.out.println(dicc[n].getTraducciones(l));
+					}
+				}
+			}
+			if (i == 1) {
+				for (int n = 0; n < j; n++) {
+					if (diccord[n]!=null) {
+						System.out.print(diccord[n].getOrigen());
+						System.out.print(":");
+						System.out.println(diccord[n].getTraducciones(l));
+					}
+				}
+			}
+		}
 	}
-}
+	
+	// devuelve el array de lenguas
+	public char[] getLenguas() {
+		return lenguas;
+	}
+} 

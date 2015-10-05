@@ -1,0 +1,11 @@
+java.lang.StringIndexOutOfBoundsException: String index out of range: 0
+============ DICCIONARIO LEIDO ===========
+matter insertada? -> false
+subway insertada? -> false
+if insertada? -> false
+basket insertada? -> false
+cord insertada? -> false
+cord insertada? -> true
+cord insertada? -> true
+matter insertada? -> true
+============ DICCIONARIO MODIFICADO ===========
