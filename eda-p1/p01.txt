@@ -1,0 +1,5 @@
+traduccion a E; acepcion lugar de trabajo -> true
+traduccion a F; acepcion lieu de travail -> true
+traduccion a P; acepcion local de trabalho -> true
+traduccion a I; acepcion sul posto di lavoro -> false
+workplace:lugar de trabajo:lieu de travail:local de trabalho

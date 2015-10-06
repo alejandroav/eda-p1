@@ -18,48 +18,53 @@ public class DiccA {
 	// explicar diccord: diccord anade las nuevas palabras mediante un metodo
 	// de ordenacion lineal
 	public void leeDiccA(String f) {
-		System.out.println("Parametro: " + f );
 		FileReader fichero = null;
 		BufferedReader lectura = null;
 		try {
 			// flujos
-			System.out.println("Voy a abrir fichero");
 			fichero = new FileReader(f);
 			lectura = new BufferedReader(fichero);
-
-			System.out.println("Fichero abierto");
 			String linea = lectura.readLine();
 			nlenguas = Integer.parseInt(linea);
-			System.out.println(nlenguas + " lenguas");
 
 			// obtengo las partes
 			linea = lectura.readLine();
 			String partes[] = null;
-			partes = linea.split("[ ]*");
+			partes = linea.split("[ ]");
 
-			int i = 0;
 			lenguas = new char[nlenguas];
-
-			for (i = 0; i < nlenguas; i++)
+			
+			for (int i = 0; i < lenguas.length; i++) {
 				lenguas[i] = partes[i].charAt(0);
+			}
 			
 			Palabra nueva = null;
 			String[] aux = null;
 			
-			System.out.println("Comienzo el bucle de lectura de palabras");
+			linea = lectura.readLine();
 
 			// recorro las lineas, creando las palabras, agregando acepciones e insertando
 			// en diccionario
+			
 			while (linea != null) {
-				partes = linea.split("[ ]*\\*[ ]*");
-				if (partes[0]!="") {
+				partes = linea.split("[ ]*\\*[ ]*");				
+				if (!partes[0].equals("")) {
 					nueva = new Palabra(partes[0],nlenguas);
-					for (i = 1; i < partes.length; i++) {
-						aux = partes[i].split("/");
-						for (int j = 0; j < aux.length; j++)
-							if (aux[j]!="")
-								nueva.agregaAcepcion(aux[j], lenguas[i]);
+					for (int i = 1; i<partes.length && i <= nlenguas; i++) {
+						if (!partes[i].equals("")) {
+							aux = partes[i].split("/");
+							if (aux!=null) {
+								for (int j = 0; j < aux.length; j++)
+									if (!aux[j].equals("")) {
+										nueva.agregaAcepcion(aux[j], lenguas[i-1]);
+									}
+							}
+							else {
+								nueva.agregaAcepcion(partes[i], lenguas[i-1]);
+							}
+						}
 					}
+					
 					insertaPalabra(nueva);
 				}
 				linea = lectura.readLine();
@@ -103,15 +108,19 @@ public class DiccA {
 				return exito;
 			}
 			
-			// si llegamos aqui, es que no existe previamente. se aumenta length si necesario
+			// si llegamos aqui, es que no existe previamente.
+			// se aumenta length si necesario
+			boolean aumentar = false;
 			if (dicc[dicc.length-1]!=null) {
+				aumentar = true;
 				Palabra[] aux = new Palabra[dicc.length+10];
-				for(int i = 0; i < dicc.length; i ++)
+				for(int i = 0; i < dicc.length; i ++) {
 					aux[i] = dicc[i];
+				}
 				dicc = aux;
 			}
 			
-			if (diccord[diccord.length-1]!=null) {
+			if (aumentar) {
 				Palabra[] aux = new Palabra[diccord.length+10];
 				for(int i = 0; i < diccord.length; i ++)
 					aux[i] = diccord[i];
@@ -119,25 +128,41 @@ public class DiccA {
 			}
 			
 			// finalmente se anade la palabra
-			for (int i = 0; i < dicc.length; i++) {
+			boolean insertado = false;
+			for (int i = 0; i < dicc.length && !insertado; i++) {
 				if (dicc[i]==null) {
 					dicc[i]=p;
+					insertado = true;
 				}
 			}
-			for (int i = 0; i < diccord.length && !exito; i++) {
-				if (diccord[i]!=null)
-					// si la nueva palabra va antes de la actual
-					// debo insertarla aqui
-					if (p.getOrigen().compareToIgnoreCase(diccord[i].getOrigen()) < 0) {
-						for (int j = diccord.length-1; j>=i; j--) {
-							if (diccord[j]!=null) {
-								diccord[j+1] = diccord[j];
+			
+			exito=false;
+
+			if (diccord[0]==null) {
+				diccord[0] = p;
+				exito = true;
+			}
+			
+			else
+				for (int i = 0; i < diccord.length && !exito; i++) {
+					if (diccord[i]!=null) {
+						// si la nueva palabra va antes de la actual
+						// debo insertarla aqui
+						if (p.getOrigen().compareToIgnoreCase(diccord[i].getOrigen()) < 0) {
+							for (int j = diccord.length-1; j>=i; j--) {
+								if (diccord[j]!=null) {
+									diccord[j+1] = diccord[j];
+								}
 							}
+							diccord[i] = p;
+							exito = true;
 						}
+					}
+					else {
 						diccord[i] = p;
 						exito = true;
 					}
-			}
+				}
 		}
 		return exito;
 	}
@@ -180,7 +205,7 @@ public class DiccA {
 		return false;
 	}
 
-	// numero de comparaciones en dicchasta encontrar origen s
+	// numero de comparaciones en dicc hasta encontrar origen s
 	public int busqueda(String s) {
 		if (s!=null) {
 			int n = 0;
@@ -245,8 +270,9 @@ public class DiccA {
 	public void muestraDiccA(int i) {
 		if (i==0) {
 			for (Palabra p : dicc) {
-				if (p!=null)
+				if (p!=null) {
 					p.escribeInfo();
+				}
 			}
 		}
 		

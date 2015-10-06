@@ -5,7 +5,10 @@ public class Bilingue {
 		// recibe un fichero de entrada con la info para el dic
 		// recibe un fichero con un texto que debe traducir
 		// recibe el idioma al que debe traducir
-		
+		args = new String[3];
+		args[0] = "p05.dic";
+		args[1] = "traducir.txt";
+		args[2] = "E";
 		DiccA dic = new DiccA();
 		dic.leeDiccA(args[0]);
 		boolean lenguaEncontrada = false;

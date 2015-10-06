@@ -1,0 +1,112 @@
+============ DICCIONARIO LEIDO ===========
+address:endereço:dirección:adresse
+after:depois:después de:après
+annoy:irritar:molestar:ennuyer
+approach:aproximar/abordar:acercarse:approche
+approximately:aproximadamente:aproximadamente:approximativement
+badly:gravemente:malo:mal
+basket:cesta:cesta:corbeille
+beef:carne:carne:boeuf
+best:melhor:mejor:meilleur
+blue:azul:azul:bleu
+bus:ônibus:autobús:bus
+cabbage:repolho:repollo:choux
+call:chamar:llamar:appel
+came:veio:vino:venir
+church:igreja:iglesia:église
+cow:vaca:vaca:vache
+customer:cliente:cliente:client
+family:família:familia:famille
+fever:febre:fiebre:fièvre
+friday:sexta-feira:viernes:vendredi
+headphones:fones de ouvido:auriculares:casque
+if:se:si:si
+immigration:imigração:imigración:immigration
+information:informação:información:information
+interrupt:interromper:interrumpir:interrompre
+job:emprego:trabajo:job
+knife:faca:cuchillo:couteau
+lay:colocar/por:dejar/colocar:poser
+low:baixo:bajo:bas
+matter:::affaire
+meeting:reunião:encuentro/reunión:réunion
+might:poder:fuerza/poder:pourrait
+modern:moderno:moderno:moderne
+normal:normal:normal:normal
+pharmacy:farmácia:farmacia:pharmacie
+photograph:fotografar:fotografía:photographie
+pig:porco:cerdo:cochon
+please:por favor:por favor:s'il vous plaît
+purse:bolsa/carteira:bolsa:sac à main
+round:redondo:redondo/alrededor:rond
+she:ella:ella:elle
+street:rua:calle:rue
+taste:provar:sabor:goût
+towel:toalha:toalla:serviette
+toy:brinquedo:juguete:jouet
+TV:televisão:televisión:télé
+vowel:vogal:vocal:voyelle
+warm:quente:caliente:chaud
+west:oeste:oeste:ouest
+wrong:errado:equivocado:faux
+matter insertada? -> true
+subway insertada? -> true
+if insertada? -> false
+basket insertada? -> true
+cord insertada? -> true
+cord insertada? -> true
+cord insertada? -> true
+matter insertada? -> true
+============ DICCIONARIO MODIFICADO ===========
+address:endereço:dirección:adresse
+after:depois:después de:après
+annoy:irritar:molestar:ennuyer
+approach:aproximar/abordar:acercarse:approche
+approximately:aproximadamente:aproximadamente:approximativement
+badly:gravemente:malo:mal
+basket:cesta/cesto:cesta:corbeille
+beef:carne:carne:boeuf
+best:melhor:mejor:meilleur
+blue:azul:azul:bleu
+bus:ônibus:autobús:bus
+cabbage:repolho:repollo:choux
+call:chamar:llamar:appel
+came:veio:vino:venir
+church:igreja:iglesia:église
+cord:fio/corda/cabo:cuerda:corde
+cow:vaca:vaca:vache
+customer:cliente:cliente:client
+family:família:familia:famille
+fever:febre:fiebre:fièvre
+friday:sexta-feira:viernes:vendredi
+headphones:fones de ouvido:auriculares:casque
+if:se:si:si
+immigration:imigração:imigración:immigration
+information:informação:información:information
+interrupt:interromper:interrumpir:interrompre
+job:emprego:trabajo:job
+knife:faca:cuchillo:couteau
+lay:colocar/por:dejar/colocar:poser
+low:baixo:bajo:bas
+matter:assunto/questão:materia/asunto:affaire
+meeting:reunião:encuentro/reunión:réunion
+might:poder:fuerza/poder:pourrait
+modern:moderno:moderno:moderne
+normal:normal:normal:normal
+pharmacy:farmácia:farmacia:pharmacie
+photograph:fotografar:fotografía:photographie
+pig:porco:cerdo:cochon
+please:por favor:por favor:s'il vous plaît
+purse:bolsa/carteira:bolsa:sac à main
+round:redondo:redondo/alrededor:rond
+she:ella:ella:elle
+street:rua:calle:rue
+subway:metrô:metro:métro
+taste:provar:sabor:goût
+towel:toalha:toalla:serviette
+toy:brinquedo:juguete:jouet
+TV:televisão:televisión:télé
+vowel:vogal:vocal:voyelle
+warm:quente:caliente:chaud
+west:oeste:oeste:ouest
+wrong:errado:equivocado:faux

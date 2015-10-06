@@ -138,11 +138,6 @@ public class Palabra {
 							if (setTrad(nuevas[j],nuevas[j].getIdioma()) != -1)
 								exito = true;
 						}
-			
-							/*if (trad[i].getIdioma() == nuevas[j].getIdioma())
-								/*for(int x = 0; x < nuevas[j].acepciones(); x++)
-									if (trad[i].anadir(nuevas[j].getAcepcion(x)))
-										exito = true;*/
 		}
 		
 		return exito;
