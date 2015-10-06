@@ -18,15 +18,19 @@ public class DiccA {
 	// explicar diccord: diccord anade las nuevas palabras mediante un metodo
 	// de ordenacion lineal
 	public void leeDiccA(String f) {
+		System.out.println("Parametro: " + f );
 		FileReader fichero = null;
 		BufferedReader lectura = null;
 		try {
 			// flujos
+			System.out.println("Voy a abrir fichero");
 			fichero = new FileReader(f);
 			lectura = new BufferedReader(fichero);
 
+			System.out.println("Fichero abierto");
 			String linea = lectura.readLine();
 			nlenguas = Integer.parseInt(linea);
+			System.out.println(nlenguas + " lenguas");
 
 			// obtengo las partes
 			linea = lectura.readLine();
@@ -41,6 +45,8 @@ public class DiccA {
 			
 			Palabra nueva = null;
 			String[] aux = null;
+			
+			System.out.println("Comienzo el bucle de lectura de palabras");
 
 			// recorro las lineas, creando las palabras, agregando acepciones e insertando
 			// en diccionario
