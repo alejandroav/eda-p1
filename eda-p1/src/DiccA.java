@@ -51,18 +51,19 @@ public class DiccA {
 				if (!partes[0].equals("")) {
 					nueva = new Palabra(partes[0],nlenguas);
 					for (int i = 1; i<partes.length && i <= nlenguas; i++) {
-						if (!partes[i].equals("")) {
+						//if (!partes[i].equals("")) {
 							aux = partes[i].split("/");
-							if (aux!=null) {
+							//if (aux!=null) {
 								for (int j = 0; j < aux.length; j++)
 									if (!aux[j].equals("")) {
 										nueva.agregaAcepcion(aux[j], lenguas[i-1]);
 									}
-							}
+							/*}
 							else {
 								nueva.agregaAcepcion(partes[i], lenguas[i-1]);
-							}
-						}
+								System.out.println("hola, esta solo tiene una acepcion");
+							}*/
+						//}
 					}
 					
 					insertaPalabra(nueva);
