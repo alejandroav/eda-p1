@@ -9,8 +9,9 @@ public class Bilingue {
 		DiccA dic = new DiccA();
 		dic.leeDiccA(args[0]);
 		boolean lenguaEncontrada = false;
+		char l = args[2].charAt(0);
 		for (char c : dic.getLenguas()) {
-			if (c == args[3].charAt(0))
+			if (c == l)
 				lenguaEncontrada = true;
 		}
 		
@@ -27,9 +28,24 @@ public class Bilingue {
 				lectura = new BufferedReader(fichero);
 	
 				String linea = lectura.readLine();
-				String[] partes = linea.split(" ");
+				String[] partes1 = linea.split("[,:;?!\\.() ]+");
+				String[] partes2 = linea.split("[ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz]+");
+				int exito = 0;
+				int exitop = 100/partes1.length;
 				
-				for (String s : partes)
+				for (int i = 0; i < partes1.length; i++) {
+					if (partes1[i]!=null) {
+						if (dic.traduce1(partes1[i], l)!=null) {
+							System.out.print(dic.traduce1(partes1[i], l));
+							exito+=exitop;
+						}
+						else
+							System.out.print("-");
+					}
+					System.out.print(partes2[i]);
+				}
+				System.out.println("");
+				System.out.println(exito + "%");
 				
 			} catch (IOException e) {
 				System.err.println(e);
@@ -44,9 +60,6 @@ public class Bilingue {
 					System.err.println(ex);
 				}
 			}
-			// comprobar que arg[2] es un idioma almacenado
-			// traducir
-		    // mostrar traduccion y el porcentaje de exito
 		}
 	}
 }
