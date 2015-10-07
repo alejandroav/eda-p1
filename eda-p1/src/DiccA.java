@@ -55,9 +55,9 @@ public class DiccA {
 							aux = partes[i].split("/");
 							//if (aux!=null) {
 								for (int j = 0; j < aux.length; j++)
-									if (!aux[j].equals("")) {
+									//if (!aux[j].equals("")) {
 										nueva.agregaAcepcion(aux[j], lenguas[i-1]);
-									}
+									//}
 							/*}
 							else {
 								nueva.agregaAcepcion(partes[i], lenguas[i-1]);

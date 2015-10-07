@@ -20,7 +20,7 @@ public class Traduccion {
 						return false;
 			
 			for (int i = 0; i < trad.length; i++) // la anado en el primer hueco vacio si lo hay
-				if (trad[i] == null) {
+				if (trad[i] == null && !s.equals("")) {
 					trad[i] = s;
 					return true;
 				}
